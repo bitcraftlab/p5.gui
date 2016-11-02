@@ -11,12 +11,18 @@ See the examples for how to use it!
 Create a new GUI:
 
 	var gui = createGui('Label');
-	
+
 Add gui elements for your variables:  
-	
+
 	gui.addGlobals('my_variable','my_other_variable', ...);
 
 You can also use the `colorMode()` functions to change the default color mode used to interpret colors and `sliderRange()` to change the default range used when creating sliders.
+
+## Examples
+
+* [https://bitcraftlab.github.io/p5.gui/examples/quicksettings-1/](Quicksettings 1)
+* [https://bitcraftlab.github.io/p5.gui/examples/quicksettings-2/](Quicksettings 2)
+
 
 ## Licensing
 
@@ -25,4 +31,4 @@ You can also use the `colorMode()` functions to change the default color mode us
 This repo also includes code from other libraries:  
 * [p5.js](https://github.com/processing/p5.js) is licensed under LGPL 2.1
 * [DAT.GUI](https://github.com/dataarts/dat.gui) is licensed under Apache 2.0
-* [Quicksettings.js](https://github.com/bit101/quicksettings) is licensed under MIT 
+* [Quicksettings.js](https://github.com/bit101/quicksettings) is licensed under MIT
