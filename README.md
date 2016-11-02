@@ -20,8 +20,8 @@ You can also use the `colorMode()` functions to change the default color mode us
 
 ## Examples
 
-* [https://bitcraftlab.github.io/p5.gui/examples/quicksettings-1/](Quicksettings 1)
-* [https://bitcraftlab.github.io/p5.gui/examples/quicksettings-2/](Quicksettings 2)
+* [Quicksettings 1](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-1/)
+* [Quicksettings 2](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-2/)
 
 
 ## Licensing
