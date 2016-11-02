@@ -20,6 +20,7 @@ You can also use the `colorMode()` functions to change the default color mode us
 
 ## Examples
 
+* [Codepen Template](https://codepen.io/bitcraftlab/pen/GNKmGg) feat Pacman
 * [Quicksettings 1](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-1/)
 * [Quicksettings 2](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-2/)
 
