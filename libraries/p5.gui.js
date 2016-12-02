@@ -159,9 +159,30 @@
 
         case 'number':
           // range from 0 to twice the value
-          var vmin = min(val, sliderMin);
-          var vmax = max(val, sliderMax);
-          var vstep = sliderStep || 1;
+          var vmin;
+          var vmax;
+          var vstep;
+          if (object[arg+"Min"]) {
+            vmin = object[arg+"Min"];
+            }
+          else {
+            vmin = min(val, sliderMin);
+          }
+
+          if (object[arg+"Max"]) {
+            vmax = object[arg+"Max"];
+            }
+          else {
+            vmax = max(val, sliderMax);
+          }
+
+          if (object[arg+"Step"]) {
+            vstep = object[arg+"Step"];
+            }
+          else {
+            vstep = sliderStep || 1;
+          }
+
           this.bindRange(arg, vmin, vmax, val, vstep, object);
           break;
 
