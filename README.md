@@ -1,5 +1,7 @@
 # p5.gui
 
+![screenshot of p5.gui](p5_gui_screenshot.png)  
+
 **p5.gui** magically generates a graphical user interface (sliders, color selector, etc) for each of your variables. Behind the scenes it uses other libraries such as Quicksettings (and in the future also DAT.GUI) to do all the hard work.
 
 You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5.js sketch.
@@ -26,6 +28,8 @@ You can also use the `colorMode()` functions to change the default color mode us
 
 
 ## Licensing
+
+![logo of p5.gui](p5_gui_logo.png)  
 
 `p5.gui` is licensed under the MIT License.
 
