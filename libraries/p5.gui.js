@@ -92,11 +92,11 @@
       // get object
       object = arguments[0];
       // convert arguments object to array
-			var params = [];
-			if(arguments.length > 1) {
-				params = Array.prototype.slice.call(arguments) 
-				params = params.slice(1);
-			}
+      var params = [];
+      if(arguments.length > 1) {
+        params = Array.prototype.slice.call(arguments) 
+        params = params.slice(1);
+      }
       // if no arguments are provided take all keys of the object
       if(params.length === 0) {
         params = object.keys();
