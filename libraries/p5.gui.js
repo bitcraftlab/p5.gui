@@ -94,7 +94,7 @@
       // convert arguments object to array
       var params = [];
       if(arguments.length > 1) {
-        params = Array.prototype.slice.call(arguments) 
+        params = Array.prototype.slice.call(arguments)
         params = params.slice(1);
       }
       // if no arguments are provided take all keys of the object
@@ -143,67 +143,66 @@
       switch(typ) {
 
         case 'object':
-          // color triple ?
-          if(val instanceof Array && val.length === 3 && typeof val[0] === 'number') {
-            // create color according to the current color mode
-            var c = color(val[0], val[1], val[2]);
-            // get decimal RGB values
-            var c2 = c.levels.slice(0,3);
-            // create HTML color code
-            var vcolor = '#' + c2.map(function(value) {
-              return ('0' + value.toString(16)).slice(-2);
-            }).join('');
-            this.bindColor(arg, vcolor, object);
-          } else {
-            // multiple choice drop down list
-            this.bindDropDown(arg, val, object);
-            object[arg] = val[0];
-          }
-          break;
+        // color triple ?
+        if(val instanceof Array && val.length === 3 && typeof val[0] === 'number') {
+          // create color according to the current color mode
+          var c = color(val[0], val[1], val[2]);
+          // get decimal RGB values
+          var c2 = c.levels.slice(0,3);
+          // create HTML color code
+          var vcolor = '#' + c2.map(function(value) {
+            return ('0' + value.toString(16)).slice(-2);
+          }).join('');
+          this.bindColor(arg, vcolor, object);
+        } else {
+          // multiple choice drop down list
+          this.bindDropDown(arg, val, object);
+          object[arg] = val[0];
+        }
+        break;
 
         case 'number':
-          // range from 0 to twice the value
-          var vmin;
-          var vmax;
-          var vstep;
-          if (object[arg+"Min"]) {
-            vmin = object[arg+"Min"];
-            }
-          else {
-            vmin = min(val, sliderMin);
-          }
+        // range from 0 to twice the value
+        var vmin;
+        var vmax;
+        var vstep;
 
-          if (object[arg+"Max"]) {
-            vmax = object[arg+"Max"];
-            }
-          else {
-            vmax = max(val, sliderMax);
-          }
+        if (object[arg + 'Min']) {
+          vmin = object[arg + 'Min'];
+        }
+        else {
+          vmin = min(val, sliderMin);
+        }
 
-          if (object[arg+"Step"]) {
-            vstep = object[arg+"Step"];
-            }
-          else {
-            vstep = sliderStep || 1;
-          }
+        if (object[arg + 'Max']) {
+          vmax = object[arg + 'Max'];
+        } else {
+          vmax = max(val, sliderMax);
+        }
 
-          this.bindRange(arg, vmin, vmax, val, vstep, object);
-          break;
+        if (object[arg + 'Step']) {
+          vstep = object[arg + 'Step'];
+        } else {
+          vstep = sliderStep || 1;
+        }
+
+        this.bindRange(arg, vmin, vmax, val, vstep, object);
+        break;
 
         case 'string':
-          var HEX6 = /^#([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})$/i;
-          if(HEX6.test(val)) {
-            // HTML color value (such as #ff0000)
-            this.bindColor(arg, val, object);
-          } else {
-            // String value
-            this.bindText(arg, val, object);
-          }
-          break;
+        var HEX6 = /^#([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})$/i;
+        if(HEX6.test(val)) {
+          // HTML color value (such as #ff0000)
+          this.bindColor(arg, val, object);
+        } else {
+          // String value
+          this.bindText(arg, val, object);
+        }
+        break;
 
         case 'boolean':
-          this.bindBoolean(arg, object[arg], object);
-          break;
+        this.bindBoolean(arg, object[arg], object);
+        break;
       }
     }
   };
