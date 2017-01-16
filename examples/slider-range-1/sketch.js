@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
-//         P5.GUI  :    Slider-Range Example                                  //
+//         P5.GUI  :    Slider-Range Example 1                                //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-// this example shows how to use magic variables to control the slider range
+// This example shows how to use magic variables to control the slider range
 // and step for individual variables.
-// just append 'min', 'max' or 'step' to your variable names.
+// Just append 'min', 'max' or 'step' to your variable names...
 
 
 // seed color and alpha
@@ -21,15 +21,16 @@ var angle = 360 * (Math.sqrt(5) - 1) / 2;
 
 // radius of the seed
 var radius = 3;
-var radiusMin = 0.5;
-var radiusMax = 5;
-var radiusStep = 0.1;
 
 // scale
 var zoom = 15;
 
 // seed opacity
 var opacity = 150;
+
+////////////////////////////////////////////////////////////////////////////////
+
+// This is where the magic happens ...
 
 // set slider range with magic variables
 var seedsMin = 1;
@@ -39,6 +40,11 @@ var seedsMax = 2000;
 var angleMax = 360;
 var angleStep = 0.1;
 
+// set radius range and step with magic variables
+var radiusMin = 0.5;
+var radiusMax = 5;
+var radiusStep = 0.1;
+
 // set step range with magic variables
 var zoomMax = 50;
 var zoomStep = 0.1;
@@ -46,10 +52,10 @@ var zoomStep = 0.1;
 // set opacity range with magic variables
 var opacityMax = 255;
 
+////////////////////////////////////////////////////////////////////////////////
+
 // the gui object
 var gui;
-
-////////////////////////////////////////////////////////////////////////////////
 
 function setup() {
 
@@ -71,7 +77,7 @@ function setup() {
 
 function draw() {
 
-  // poo is the new black
+  // hello darkness my old friend
   background(bgColor);
 
   // let the seeds be filleth
