@@ -24,6 +24,7 @@ You can also use the `colorMode()` functions to change the default color mode us
 * [Pacman](https://bitcraftlab.github.io/p5.gui/examples/pacman/)
 * [Quicksettings 1](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-1/)
 * [Quicksettings 2](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-2/)
+* [Slider Range 1](https://bitcraftlab.github.io/p5.gui/examples/slider-range-1/)
 
 ## Links
 * [Codepen Template](https://codepen.io/bitcraftlab/pen/GNKmGg) feat Pacman
