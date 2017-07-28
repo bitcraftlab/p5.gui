@@ -6,7 +6,7 @@
   var guis = [];
 
   // default slider params
-  var sliderMin = 0;
+  var sliderMin = 1;
   var sliderMax = 100;
   var sliderStep = 1;
 
@@ -106,10 +106,14 @@
 
     this.addButton = function(title, callback) {
       qs.addButton(title, callback);
-    }
+    };
 
     this.setRangeValue = function(title, value) {
       qs.setRangeValue(title, value);
+    };
+
+    this.setDropDownIndex = function(title, index) {
+      qs.setDropDownIndex(title, index);
     };
 
     // noLoop() to call draw every time the gui changes when we are not looping
