@@ -113,7 +113,7 @@
     };
 
     this.setDropDownIndex = function(title, index) {
-      qs.setDropDownIndex(title, index);
+      qs.setDropDownIndex(title, Math.round(index));
     };
 
     // noLoop() to call draw every time the gui changes when we are not looping
