@@ -116,6 +116,10 @@
       qs.setDropDownIndex(title, Math.round(index));
     };
 
+    this.addHTML = function(title, html) {
+    	qs.addHTML(title, html);	
+    }
+
     // noLoop() to call draw every time the gui changes when we are not looping
     this.noLoop = function() {
       qs.setGlobalChangeHandler(draw);
