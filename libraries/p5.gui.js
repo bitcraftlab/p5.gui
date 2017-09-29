@@ -108,7 +108,7 @@
       qs.addButton(title, callback);
     };
 
-    this.setRangeValue = function(title, value) {
+    this.setValue = function(title, value) {
       qs.setRangeValue(title, value);
     };
 
