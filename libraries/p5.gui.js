@@ -99,7 +99,8 @@
       }
       // if no arguments are provided take all keys of the object
       if(params.length === 0) {
-        params = object.keys();
+        // won't work in Internet Explorer < 9 (use a polyfill)
+        params = Object.keys(object);
       }
       qs.bindParams(object, params);
     };
