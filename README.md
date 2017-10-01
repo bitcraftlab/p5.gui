@@ -18,6 +18,20 @@ Add gui elements for your variables:
 
 	gui.addGlobals('my_variable','my_other_variable', ...);
 
+You can add an object in order to create a slider :
+
+		const object = {
+			value: 0,
+			valueMin: 0, 		// optional
+			valueMax: 42, 	// optional
+			valueStep: 0.1 	// optional
+		};
+
+		gui.addObject(object);
+
+and then use it as this  `object.value`
+
+
 You can also use the `colorMode()` functions to change the default color mode used to interpret colors and `sliderRange()` to change the default range used when creating sliders.
 
 ## Examples
@@ -25,6 +39,7 @@ You can also use the `colorMode()` functions to change the default color mode us
 * [Quicksettings 1](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-1/)
 * [Quicksettings 2](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-2/)
 * [Slider Range 1](https://bitcraftlab.github.io/p5.gui/examples/slider-range-1/)
+* [Slider Range With Objects](https://bitcraftlab.github.io/p5.gui/examples/slider-range-3/)
 
 ## Links
 * [Codepen Template](https://codepen.io/bitcraftlab/pen/GNKmGg) feat Pacman
