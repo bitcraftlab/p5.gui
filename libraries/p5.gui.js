@@ -140,8 +140,13 @@
       var val = object[arg];
       var typ = typeof val;
 
-      // console.log(typ, arg, val);
+      //console.log(typ, arg, val);
 
+      // don't need to show the sliders for range min, max and step of a property
+      var sliderConfigRegEx = /^(.*min|.*max|.*step)$/i;
+      if( sliderConfigRegEx.test(arg)){
+        continue;
+      }
       switch(typ) {
 
         case 'object':
