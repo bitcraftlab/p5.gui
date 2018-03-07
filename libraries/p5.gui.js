@@ -109,16 +109,16 @@
         };
 
         this.setValue = function(title, value) {
-            qs.setRangeValue(title, value);
+            qs.setValue(title, value);
         };
 
         this.setBoolean = function(title, index) {
-            qs.setBoolean(title, Math.round(index));
+            qs.setValue(title, Math.round(index));
         }
 
 
         this.setDropDownIndex = function(title, index) {
-            qs.setDropDownIndex(title, Math.round(index));
+            qs.setValue(title, Math.round(index));
         };
 
         this.addHTML = function(title, html) {

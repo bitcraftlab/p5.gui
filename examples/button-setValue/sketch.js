@@ -12,7 +12,7 @@ var label = 'label';
 
 // gui
 var visible = true;
-var gui, gui2;
+var gui;
 
 // dynamic parameters
 var bigRadius;
@@ -106,10 +106,11 @@ function draw() {
 }
 
 function randomize() {
-	gui.setRangeValue('numShapes', random(0, 100));
-	gui.setRangeValue("bigRadius", random(0, height/3.0))
-	gui.setRangeValue('radius', random(0, 100));
-	gui.setRangeValue('strokeWidth', random(0, 100));
+	gui.setValue('numShapes', random(0, 100));
+	gui.setValue("bigRadius", random(0, height/3.0))
+	gui.setValue('radius', random(0, 100));
+	gui.setValue('shape', round(random(4)));
+	gui.setValue('strokeWidth', random(0, 100));
 }
 
 // check for keyboard events
