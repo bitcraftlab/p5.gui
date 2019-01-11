@@ -27,13 +27,13 @@ You can also use the `colorMode()` functions to change the default color mode us
 * [Slider Range 1](https://bitcraftlab.github.io/p5.gui/examples/slider-range-1/)
 
 #### Example 1 - number and text
-![gif example 1 - number and text](https://github.com/nngogol/p5.gui/blob/master/examples/ex1.gif)
+![gif example 1 - number and text](/examples/ex1.gif)
 
 #### Example 2 - checkbox, combo
-![gif example 2 - checkbox, combo](https://github.com/nngogol/p5.gui/blob/master/examples/ex2.gif)
+![gif example 2 - checkbox, combo](/examples/ex2.gif)
 
 #### Example 3 - color
-![gif example 3 - color](https://github.com/nngogol/p5.gui/blob/master/examples/ex3.gif)
+![gif example 3 - color](/examples/ex3.gif)
 
 ## Links
 * [Codepen Template](https://codepen.io/bitcraftlab/pen/GNKmGg) feat Pacman
