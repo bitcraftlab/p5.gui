@@ -4,50 +4,45 @@
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-// This example shows how to use objects variables to control the slider range
-// and step for individual variables.
+// This example shows how to use *addObject* instead of *addGlobals*
+// to provide gui parameters via a javascript object
 
-// seed color and alpha
-var seedColor = '#ff00dd';
-var bgColor = [0, 0, 0];
-// seeds
-const seeds = {
+let params = {
+
+  // seeds
   seeds: 500,
   seedsMin: 1,
-  seedsMax: 2000
-};
+  seedsMax: 2000,
 
-// angle (phi)
-const angle = {
+  // angle (phi)
   angle: 360 * (Math.sqrt(5)-1) / 2,
   angleMax: 360,
-  angleStep: 0.1
-}
-// radius of the seed
-const radius = {
+  angleStep: 0.1,
+
+  // radius of the seed
   radius: 3,
   radiusMin: 0.5,
   radiusMax: 5,
-  radiusStep: 0.1
-};
+  radiusStep: 0.1,
 
-// scale
-const zoom = {
+  seedColor: '#ff00dd',
+
+  // scale
   zoom: 15,
   zoomMax: 50,
-  zoomStep: 0.1
-};
+  zoomStep: 0.1,
 
-// seed opacity
-const opacity = {
   opacity: 150,
-  opacityMax: 255
+  opacityMax: 255,
+
+  bgColor: [0, 0, 0]
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 
 // the gui object
-var gui;
+let gui;
 
 function setup() {
 
@@ -57,17 +52,9 @@ function setup() {
   // create a canvas that fills the window
   createCanvas(windowWidth, windowHeight);
 
-  // create the GUI
+  // create the GUI from a settings object
   gui = createGui('slider-range-1');
-  gui.addObject(seeds);
-  gui.addObject(angle);
-  gui.addObject(zoom);
-  gui.addObject(radius);
-  gui.addObject(opacity);
-
-  // we keep the colors variables as non objects
-  gui.addGlobals('seedColor', 'bgColor');
-
+  gui.addObject(params);
 
   // only call draw when then gui is changed
   noLoop();
@@ -78,15 +65,15 @@ function setup() {
 function draw() {
 
   // hello darkness my old friend
-  background(bgColor);
+  background(params.bgColor);
 
   // let the seeds be filleth
-  var c = color(seedColor);
-  fill(red(c), green(c), blue(c), opacity.opacity);
-  stroke(0, opacity.opacity);
+  let c = color(params.seedColor);
+  fill(red(c), green(c), blue(c), params.opacity);
+  stroke(0, params.opacity);
 
   // absolute radius
-  var r = radius.radius * zoom.zoom;
+  let r = params.radius * params.zoom;
 
   push();
 
@@ -94,11 +81,11 @@ function draw() {
   translate(width/2, height/2);
 
   // rotate around the center while going outwards
-  for(var i = 0; i < seeds.seeds; i++) {
+  for(let i = 0; i < params.seeds; i++) {
     push();
-    rotate(i * angle.angle);
+    rotate(i * params.angle);
     // distance to the center of the sunflower
-    var d = sqrt(i + 0.5) * zoom.zoom;
+    let d = sqrt(i + 0.5) * params.zoom;
     ellipse(d, 0, r, r);
     pop();
   }
