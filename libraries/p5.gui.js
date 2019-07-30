@@ -13,20 +13,37 @@
   // default gui provider
   var guiProvider = 'QuickSettings';
 
+  const defaultLabel = 'p5.gui';
+
   // Create a GUI using QuickSettings (or DAT.GUI or ...)
-  p5.prototype.createGui = function(label, x, y, parent, sketch, provider) {
+  // You only need to pass a reference to the sketch in instance mode
 
-    label = label || 'GUI';
+  // Usually you will call createGui(this, 'label');
+  p5.prototype.createGui = function(sketch, label, provider) {
 
-    // namespace for processing functions
-    sketch = sketch || window;
+    // createGui(label) signature
+    if ((typeof sketch) === 'string') {
+      return this.createGui(label, sketch, provider);
+    }
+
+    // normally the sketch will just be embedded below the body
+    let parent = document.body;
+
+    if(sketch === undefined) {
+      // p5js global mode
+      sketch = window;
+      label = label || document.title || defaultLabel;
+    } else {
+      // p5js instance mode
+      parent = sketch.canvas.parentElement;
+      label = label || parent.id || defaultLabel;
+    }
 
     if(!('color' in sketch)) {
       console.error(`${parent.id}: You need to pass the p5 sketch to createGui in instance mode!`);
     }
 
-    x = x || 20;
-    y = y || 20;
+    // default gui provider
     provider = provider || guiProvider;
 
     var gui;
@@ -35,14 +52,14 @@
     if(provider === 'QuickSettings') {
       if(QuickSettings) {
         console.log('Creating p5.gui powered by QuickSettings.');
-        gui = new QSGui(label, x, y, parent, sketch);
+        gui = new QSGui(label, parent, sketch);
       } else {
         console.log('QuickSettings not found. Is the script included in your HTML?');
-        gui = new DummyGui(label, x, y, parent, sketch);
+        gui = new DummyGui(label, parent, sketch);
       }
     } else {
       console.log('Unknown GUI provider ' + provider);
-      gui = new DummyGui(label, x, y, parent, sketch);
+      gui = new DummyGui(label, parent, sketch);
     }
 
     // add it to the list of guis
@@ -84,7 +101,11 @@
 
 
   // interface for quicksettings
-  function QSGui(label, x, y, parent, sketch) {
+  function QSGui(label, parent, sketch) {
+
+    // hard code the position, it can be changed later
+    let x = 20;
+    let y = 20;
 
     var qs = QuickSettings.create(x, y, label, parent);
 
@@ -124,10 +145,14 @@
       qs.setGlobalChangeHandler(null);
     };
 
+    // pass through ...
     this.show = function() { qs.show(); };
     this.hide = function() { qs.hide(); };
     this.toggleVisibility = function() { qs.toggleVisibility(); };
-
+    this.setPosition  = function(x, y) {
+      qs.setPosition(x, y);
+      return this;
+    };
 
     // Extend Quicksettings
     // so it can magically create a GUI for parameters passed by name
