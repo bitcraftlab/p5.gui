@@ -8,38 +8,138 @@ You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5
 
 ## Usage
 
-See the examples for how to use it!
+See the examples for how to use it ...
 
-Create a new GUI:
+### Add Global Variables
 
-	var gui = createGui('Label');
+Create your variables 
+
+	let myNumber = 100;
+	let myColor = color(255, 0, 0);
+	let myChoice = ['one', 'two', 'three'];
+
+Create a new GUI with a label
+
+	var gui = createGui('My awesome GUI');
 
 Add gui elements for your variables:  
 
-	gui.addGlobals('my_variable','my_other_variable', ...);
+	gui.addGlobals('myColor', 'myNumber', 'myChoice');
 
-You can add an object in order to create a slider :
+p5.gui inspects the type of your variables and magically displays the corresponding GUI elements.
 
-		const object = {
-			value: 0,
-			valueMin: 0, 		// optional
-			valueMax: 42, 	// optional
-			valueStep: 0.1 	// optional
+*An example can be found [here](examples/quicksettings-1).*
+
+### Use Magic Variables to control individual sliders
+
+Once you have created a variable called `myNumber` you can control the details of the slider like this:
+
+		let myNumber = 100;
+		let myNumbeMin = 0;
+		let myNumbeMax = 1000;
+		let myNumbeStep = 10;
+		gui.addGlobals('myNumber');
+		
+p5.gui will magically pick up variables ending in `Min`, `Max` and `Step` to  control the appearance of the slider.
+
+*See [here](examples/slider-range-1) for an example.*
+
+### Use sliderRange() to control slider creation
+
+If you want explicitly control the range of a couple of sliders you can also use the `sliderRange(min, max, step)` command.
+
+This will set the range for all future calls to p5.gui.
+
+	let a = 100;
+	let b = 120;
+	let c = 120;
+	sliderRange(0, 1000, 10);
+	gui.addGlobals('a', 'b', 'c');
+
+
+*See [here](examples/slider-range-2) and [here](examples/quicksettings-2) for an example.*
+		
+### Pass params as objects
+
+If you want to keep all your parameters in a single place, you can wrap them into an object like this:
+
+	let params = {
+		myNumber: 100,
+		myColor: [255, 0, 0],
+		myChoice: ['one', 'two', 'three'];
+	};
+		
+	gui.addObject(params);
+	
+Slider Magic works just as with global variables:
+
+	let params = {
+		myNumber: 100,
+		myNumbeMin: 0,
+		myNumbeMax: 1000,
+		myNumbeStep: 10
+	};
+	
+
+*See [here](examples/slider-range-3) for an example.*
+
+### Pass your sketch in instance mode 
+
+If you want to run your processing sketch in [instance mode](https://github.com/processing/p5.js/wiki/Global-and-instance-mode), you need to pass your sketch to the createGui function.  Here's a simple example:
+
+	let sketch = function(p) {
+	
+		let params = {
+			r: 100
 		};
+	
+		p.setup = function() {
+			p.createCanvas(p.windowWidth, p.windowHeight);
+			gui = p.createGui('My GUI', this);
+			gui.addObject(params);
+		}
+		
+		p.draw = function() {
+			p.ellipse(p.width/2, p.height/2, params.r, params.r);
+		}
+		
+	}
+	
+	new p5(sketch, 'canvasid');
+			
+*You can find this example [here](examples/instance-mode-1).*
 
-		gui.addObject(object);
+### One sketch, many guis
 
-and then use it as this  `object.value`
+You can just create several guis, and position them individually:
 
+	let gui1 = p.createGui('My 1st GUI');
+	gui1.moveTo(50, 50);
+	gui1.addGlobals('a', 'b', 'c');
+		
+	let gui2 = p.createGui('My 2nd GUI');
+	gui2.moveTo(windowWidth - 50, 50);
+	gui2.addGlobals('e', 'f', 'g');
+	
+See [here](examples/quicksettings-2) for an example.
 
-You can also use the `colorMode()` functions to change the default color mode used to interpret colors and `sliderRange()` to change the default range used when creating sliders.
+### Many sketches, Many Guis
+
+When using Instance Mode (see above) you can can easily create several sketches, or versions of a single sketch.
+
+See [here](examples/quicksettings-4) for an example.
+
+### Color Modes
+
+You can use the `colorMode()` function to change the default color mode used to interpret colors when creating the GUI.
+
 
 ## Examples
-* [Pacman](https://bitcraftlab.github.io/p5.gui/examples/pacman/)
-* [Quicksettings 1](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-1/)
-* [Quicksettings 2](https://bitcraftlab.github.io/p5.gui/examples/quicksettings-2/)
-* [Slider Range 1](https://bitcraftlab.github.io/p5.gui/examples/slider-range-1/)
-* [Slider Range With Objects](https://bitcraftlab.github.io/p5.gui/examples/slider-range-3/)
+* [Pacman](examples/pacman/)
+* [Quicksettings 1](examples/quicksettings-1/)
+* [Quicksettings 2](examples/quicksettings-2/)
+* [Slider Range 1](examples/slider-range-1/)
+* [Slider Range With Objects](examples/slider-range-3/)
 
 ## Links
 * [Codepen Template](https://codepen.io/bitcraftlab/pen/GNKmGg) feat Pacman
@@ -51,6 +151,7 @@ You can also use the `colorMode()` functions to change the default color mode us
 `p5.gui` is licensed under the MIT License.
 
 This repo also includes code from other libraries:  
+
 * [p5.js](https://github.com/processing/p5.js) is licensed under LGPL 2.1
 * [DAT.GUI](https://github.com/dataarts/dat.gui) is licensed under Apache 2.0
 * [Quicksettings.js](https://github.com/bit101/quicksettings) is licensed under MIT
