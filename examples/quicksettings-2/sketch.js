@@ -30,7 +30,7 @@ function setup() {
   gui.addGlobals('numShapes', 'bigRadius');
 
   // Create Shape GUI
-  gui2 = createGui('Style', width - 220, 20);
+  gui2 = createGui('Style').setPosition(width - 220, 20);
   colorMode(HSB);
   sliderRange(0, 50, 1);
   gui2.addGlobals('shape', 'label', 'radius', 'drawFill', 'fillColor');

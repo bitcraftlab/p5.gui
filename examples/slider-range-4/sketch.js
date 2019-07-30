@@ -4,10 +4,8 @@
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-// Note: this example uses *Instance Mode* to create two sketches on one page
+// Note: this example uses *Instance Mode* to create three sketches on one page
 // See here: https://p5js.org/examples/instance-mode-instantiation.html
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -72,7 +70,7 @@ function makeSketch(id, hue) {
       let id = p.canvas.parentElement.id;
 
       // create the GUI from a settings object
-      gui = p.createGui(id, 20, 20, div, this);
+      gui = p.createGui(this);
       gui.addObject(params);
 
       // only call draw when then gui is changed

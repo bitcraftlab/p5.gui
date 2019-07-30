@@ -25,7 +25,7 @@ function setup() {
   bigRadius = height / 3.0;
 
   // Create Layout GUI
-  gui = createGui('P5 GUI');
+  gui = createGui();
   gui.addGlobals('numShapes', 'bigRadius', 'shape', 'label', 'radius',
   'drawFill', 'fillColor', 'drawStroke', 'strokeColor', 'strokeWidth');
 
