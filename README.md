@@ -42,9 +42,9 @@ Once you have created a variable called `myNumber` you can control the details o
 
 ```js
 let myNumber = 100;
-let myNumbeMin = 0;
-let myNumbeMax = 1000;
-let myNumbeStep = 10;
+let myNumberMin = 0;
+let myNumberMax = 1000;
+let myNumberStep = 10;
 gui.addGlobals('myNumber');
 ```
 
