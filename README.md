@@ -123,11 +123,11 @@ You can just create several guis, and position them individually:
 	
 See [here](examples/quicksettings-2) for an example.
 
-### Many sketches, Many Guis
+### Many sketches, many guis
 
 When using Instance Mode (see above) you can can easily create several sketches, or versions of a single sketch.
 
-See [here](examples/quicksettings-4) for an example.
+See [here](examples/slider-range-4) for an example.
 
 ### Color Modes
 
