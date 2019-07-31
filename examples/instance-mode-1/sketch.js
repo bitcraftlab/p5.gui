@@ -10,7 +10,7 @@ let sketch = function(p) {
 
     div = p.canvas.parentElement;
 
-    p.createCanvas(div.offsetWidth, div.offsetHeight);
+    p.createCanvas(div.clientWidth, div.clientHeight);
     gui = p.createGui(this);
     gui.addObject(params);
   }

@@ -12,7 +12,7 @@ You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5
 
 ### Add Global Variables
 
-Create your variables 
+Create your variables
 
 	let myNumber = 100;
 	let myColor = color(255, 0, 0);
@@ -39,7 +39,7 @@ Once you have created a variable called `myNumber` you can control the details o
 		let myNumbeMax = 1000;
 		let myNumbeStep = 10;
 		gui.addGlobals('myNumber');
-		
+
 p5.gui will magically pick up variables ending in `Min`, `Max` and `Step` to  control the appearance of the slider.
 
 *See [here](examples/slider-range-1) for an example.*
@@ -58,7 +58,7 @@ This will set the range for all future calls to p5.gui.
 
 
 *See [here](examples/slider-range-2) and [here](examples/quicksettings-2) for an example.*
-		
+
 ### Pass params as objects
 
 If you want to keep all your parameters in a single place, you can wrap them into an object like this:
@@ -68,9 +68,9 @@ If you want to keep all your parameters in a single place, you can wrap them int
 		myColor: [255, 0, 0],
 		myChoice: ['one', 'two', 'three'];
 	};
-		
+
 	gui.addObject(params);
-	
+
 Slider Magic works just as with global variables:
 
 	let params = {
@@ -79,34 +79,45 @@ Slider Magic works just as with global variables:
 		myNumbeMax: 1000,
 		myNumbeStep: 10
 	};
-	
+
 
 *See [here](examples/slider-range-3) for an example.*
 
-### Pass your sketch in instance mode 
+### Pass your sketch in instance mode
 
 If you want to run your processing sketch in [instance mode](https://github.com/processing/p5.js/wiki/Global-and-instance-mode), you need to pass your sketch to the createGui function.  Here's a simple example:
 
 	let sketch = function(p) {
-	
+
+	  let div;
+
 		let params = {
-			r: 100
+		  r: 500
 		};
-	
-		p.setup = function() {
-			p.createCanvas(p.windowWidth, p.windowHeight);
-			gui = p.createGui('My GUI', this);
-			gui.addObject(params);
-		}
-		
-		p.draw = function() {
-			p.ellipse(p.width/2, p.height/2, params.r, params.r);
-		}
-		
+
+	  p.setup = function() {
+	    div = p.canvas.parentElement;
+	    p.createCanvas(div.clientWidth, div.clientHeight);
+	    gui = p.createGui(this);
+	    gui.addObject(params);
+	  };
+
+	  p.draw = function() {
+	    p.background(220);
+	    p.ellipse(p.width/2, p.height/2, params.r, params.r);
+	  };
+
+	  p.windowResized = function() {
+	    p.resizeCanvas(div.clientWidth, div.clientHeight);
+	  };
+
 	}
-	
-	new p5(sketch, 'canvasid');
-			
+
+	new p5(sketch, 'sketch1');
+	new p5(sketch, 'sketch2');
+	new p5(sketch, 'sketch3');
+	new p5(sketch, 'sketch4');
+
 *You can find this example [here](examples/instance-mode-1).*
 
 ### One sketch, many guis
@@ -116,11 +127,11 @@ You can just create several guis, and position them individually:
 	let gui1 = p.createGui('My 1st GUI');
 	gui1.moveTo(50, 50);
 	gui1.addGlobals('a', 'b', 'c');
-		
+
 	let gui2 = p.createGui('My 2nd GUI');
 	gui2.moveTo(windowWidth - 50, 50);
 	gui2.addGlobals('e', 'f', 'g');
-	
+
 See [here](examples/quicksettings-2) for an example.
 
 ### Many sketches, many guis
