@@ -34,11 +34,11 @@ p5.gui inspects the type of your variables and magically displays the correspond
 
 Once you have created a variable called `myNumber` you can control the details of the slider like this:
 
-		let myNumber = 100;
-		let myNumbeMin = 0;
-		let myNumbeMax = 1000;
-		let myNumbeStep = 10;
-		gui.addGlobals('myNumber');
+	let myNumber = 100;
+	let myNumbeMin = 0;
+	let myNumbeMax = 1000;
+	let myNumbeStep = 10;
+	gui.addGlobals('myNumber');
 
 p5.gui will magically pick up variables ending in `Min`, `Max` and `Step` to  control the appearance of the slider.
 
@@ -55,7 +55,6 @@ This will set the range for all future calls to p5.gui.
 	let c = 120;
 	sliderRange(0, 1000, 10);
 	gui.addGlobals('a', 'b', 'c');
-
 
 *See [here](examples/slider-range-2) and [here](examples/quicksettings-2) for an example.*
 
@@ -92,19 +91,19 @@ If you want to run your processing sketch in [instance mode](https://github.com/
 		let div;
 
 		let params = {
-		  r: 500
+			r: 500
 		};
 
 		p.setup = function() {
-		  div = p.canvas.parentElement;
-		  p.createCanvas(div.clientWidth, div.clientHeight);
-		  gui = p.createGui(this);
-		  gui.addObject(params);
+			div = p.canvas.parentElement;
+			p.createCanvas(div.clientWidth, div.clientHeight);
+			gui = p.createGui(this);
+			gui.addObject(params);
 		};
 
 		p.draw = function() {
-		  p.background(220);
-		  p.ellipse(p.width/2, p.height/2, params.r, params.r);
+			p.background(220);
+			p.ellipse(p.width/2, p.height/2, params.r, params.r);
 		};
 
 		p.windowResized = function() {
