@@ -23,13 +23,13 @@ let myChoice = ['one', 'two', 'three'];
 Create a new GUI with a label
 
 ```js
-	var gui = createGui('My awesome GUI');
+var gui = createGui('My awesome GUI');
 ```
 
 Add gui elements for your variables:  
 
 ```js
-	gui.addGlobals('myColor', 'myNumber', 'myChoice');
+gui.addGlobals('myColor', 'myNumber', 'myChoice');
 ```
 
 p5.gui inspects the type of your variables and magically displays the corresponding GUI elements.
