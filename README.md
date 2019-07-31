@@ -89,27 +89,27 @@ If you want to run your processing sketch in [instance mode](https://github.com/
 
 	let sketch = function(p) {
 
-	  let div;
+		let div;
 
 		let params = {
 		  r: 500
 		};
 
-	  p.setup = function() {
-	    div = p.canvas.parentElement;
-	    p.createCanvas(div.clientWidth, div.clientHeight);
-	    gui = p.createGui(this);
-	    gui.addObject(params);
-	  };
+		p.setup = function() {
+		  div = p.canvas.parentElement;
+		  p.createCanvas(div.clientWidth, div.clientHeight);
+		  gui = p.createGui(this);
+		  gui.addObject(params);
+		};
 
-	  p.draw = function() {
-	    p.background(220);
-	    p.ellipse(p.width/2, p.height/2, params.r, params.r);
-	  };
+		p.draw = function() {
+		  p.background(220);
+		  p.ellipse(p.width/2, p.height/2, params.r, params.r);
+		};
 
-	  p.windowResized = function() {
-	    p.resizeCanvas(div.clientWidth, div.clientHeight);
-	  };
+		p.windowResized = function() {
+			p.resizeCanvas(div.clientWidth, div.clientHeight);
+		};
 
 	}
 
