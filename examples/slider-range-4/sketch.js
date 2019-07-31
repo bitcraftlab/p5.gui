@@ -64,10 +64,7 @@ function makeSketch(id, hue) {
 
       // create a canvas that fills the div
       div = p.canvas.parentElement;
-      p.createCanvas(div.offsetWidth, div.offsetHeight);
-
-      // use the id of the container as label
-      let id = p.canvas.parentElement.id;
+      p.createCanvas(div.clientWidth, div.clientHeight);
 
       // create the GUI from a settings object
       gui = p.createGui(this);
@@ -112,7 +109,7 @@ function makeSketch(id, hue) {
     // dynamically adjust the canvas to the window
     p.windowResized = function() {
       // p.resizeCanvas(div.clientWidth, div.clientHeight);
-      p.resizeCanvas(p.windowWidth / 3, div.clientHeight);
+      p.resizeCanvas(div.clientWidth, div.clientHeight);
     }
 
 
