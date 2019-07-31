@@ -15,18 +15,22 @@ You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5
 Create your variables
 
 ```js
-	let myNumber = 100;
-	let myColor = color(255, 0, 0);
-	let myChoice = ['one', 'two', 'three'];
+let myNumber = 100;
+let myColor = color(255, 0, 0);
+let myChoice = ['one', 'two', 'three'];
 ```
 
 Create a new GUI with a label
 
+```js
 	var gui = createGui('My awesome GUI');
+```
 
 Add gui elements for your variables:  
 
+```js
 	gui.addGlobals('myColor', 'myNumber', 'myChoice');
+```
 
 p5.gui inspects the type of your variables and magically displays the corresponding GUI elements.
 
@@ -37,11 +41,11 @@ p5.gui inspects the type of your variables and magically displays the correspond
 Once you have created a variable called `myNumber` you can control the details of the slider like this:
 
 ```js
-	let myNumber = 100;
-	let myNumbeMin = 0;
-	let myNumbeMax = 1000;
-	let myNumbeStep = 10;
-	gui.addGlobals('myNumber');
+let myNumber = 100;
+let myNumbeMin = 0;
+let myNumbeMax = 1000;
+let myNumbeStep = 10;
+gui.addGlobals('myNumber');
 ```
 
 p5.gui will magically pick up variables ending in `Min`, `Max` and `Step` to  control the appearance of the slider.
@@ -55,11 +59,11 @@ If you want explicitly control the range of a couple of sliders you can also use
 This will set the range for all future calls to p5.gui.
 
 ```js
-	let a = 100;
-	let b = 120;
-	let c = 120;
-	sliderRange(0, 1000, 10);
-	gui.addGlobals('a', 'b', 'c');
+let a = 100;
+let b = 120;
+let c = 120;
+sliderRange(0, 1000, 10);
+gui.addGlobals('a', 'b', 'c');
 ```
 
 *See [here](examples/slider-range-2) and [here](examples/quicksettings-2) for an example.*
@@ -69,24 +73,24 @@ This will set the range for all future calls to p5.gui.
 If you want to keep all your parameters in a single place, you can wrap them into an object like this:
 
 ```js
-	let params = {
-		myNumber: 100,
-		myColor: [255, 0, 0],
-		myChoice: ['one', 'two', 'three'];
-	};
+let params = {
+	myNumber: 100,
+	myColor: [255, 0, 0],
+	myChoice: ['one', 'two', 'three'];
+};
 
-	gui.addObject(params);
+gui.addObject(params);
 ```
 
 Slider Magic works just as with global variables:
 
 ```js
-	let params = {
-		myNumber: 100,
-		myNumbeMin: 0,
-		myNumbeMax: 1000,
-		myNumbeStep: 10
-	};
+let params = {
+	myNumber: 100,
+	myNumbeMin: 0,
+	myNumbeMax: 1000,
+	myNumbeStep: 10
+};
 ```
 
 *See [here](examples/slider-range-3) for an example.*
@@ -96,36 +100,36 @@ Slider Magic works just as with global variables:
 If you want to run your processing sketch in [instance mode](https://github.com/processing/p5.js/wiki/Global-and-instance-mode), you need to pass your sketch to the createGui function.  Here's a simple example:
 
 ```js
-	let sketch = function(p) {
+let sketch = function(p) {
 
-		let div;
+	let div;
 
-		let params = {
-			r: 500
-		};
+	let params = {
+		r: 500
+	};
 
-		p.setup = function() {
-			div = p.canvas.parentElement;
-			p.createCanvas(div.clientWidth, div.clientHeight);
-			gui = p.createGui(this);
-			gui.addObject(params);
-		};
+	p.setup = function() {
+		div = p.canvas.parentElement;
+		p.createCanvas(div.clientWidth, div.clientHeight);
+		gui = p.createGui(this);
+		gui.addObject(params);
+	};
 
-		p.draw = function() {
-			p.background(220);
-			p.ellipse(p.width/2, p.height/2, params.r, params.r);
-		};
+	p.draw = function() {
+		p.background(220);
+		p.ellipse(p.width/2, p.height/2, params.r, params.r);
+	};
 
-		p.windowResized = function() {
-			p.resizeCanvas(div.clientWidth, div.clientHeight);
-		};
+	p.windowResized = function() {
+		p.resizeCanvas(div.clientWidth, div.clientHeight);
+	};
 
-	}
+}
 
-	new p5(sketch, 'sketch1');
-	new p5(sketch, 'sketch2');
-	new p5(sketch, 'sketch3');
-	new p5(sketch, 'sketch4');
+new p5(sketch, 'sketch1');
+new p5(sketch, 'sketch2');
+new p5(sketch, 'sketch3');
+new p5(sketch, 'sketch4');
 ```
 
 *You can find this example [here](examples/instance-mode-1).*
@@ -135,13 +139,13 @@ If you want to run your processing sketch in [instance mode](https://github.com/
 You can just create several guis, and position them individually:
 
 ```js
-	let gui1 = p.createGui('My 1st GUI');
-	gui1.moveTo(50, 50);
-	gui1.addGlobals('a', 'b', 'c');
+let gui1 = p.createGui('My 1st GUI');
+gui1.moveTo(50, 50);
+gui1.addGlobals('a', 'b', 'c');
 
-	let gui2 = p.createGui('My 2nd GUI');
-	gui2.moveTo(windowWidth - 50, 50);
-	gui2.addGlobals('e', 'f', 'g');
+let gui2 = p.createGui('My 2nd GUI');
+gui2.moveTo(windowWidth - 50, 50);
+gui2.addGlobals('e', 'f', 'g');
 ```
 
 See [here](examples/quicksettings-2) for an example.
