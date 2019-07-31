@@ -8,7 +8,7 @@ You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5
 
 ## Usage
 
-See the examples for how to use it ...
+[Explore the examples](https://bitcraftlab.github.io/p5.gui) for how to use it ...
 
 ### Add Global Variables
 
