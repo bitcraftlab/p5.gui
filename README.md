@@ -12,7 +12,7 @@ You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5
 
 ### Add Global Variables
 
-Create your variables
+Create your variables.
 
 ```js
 let myNumber = 100;
