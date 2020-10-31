@@ -19,11 +19,11 @@
   // You only need to pass a reference to the sketch in instance mode
 
   // Usually you will call createGui(this, 'label');
-  p5.prototype.createGui = function(sketch, label, provider, draggable = true) {
+  p5.prototype.createGui = function(sketch, label, provider) {
 
     // createGui(label) signature
     if ((typeof sketch) === 'string') {
-      return this.createGui(label, sketch, provider, draggable);
+      return this.createGui(label, sketch, provider);
     }
 
     // normally the sketch will just be embedded below the body
@@ -52,7 +52,7 @@
     if(provider === 'QuickSettings') {
       if(QuickSettings) {
         console.log('Creating p5.gui powered by QuickSettings.');
-        gui = new QSGui(label, parent, sketch, draggable);
+        gui = new QSGui(label, parent, sketch);
       } else {
         console.log('QuickSettings not found. Is the script included in your HTML?');
         gui = new DummyGui(label, parent, sketch);
@@ -101,7 +101,7 @@
 
 
   // interface for quicksettings
-  function QSGui(label, parent, sketch, draggable) {
+  function QSGui(label, parent, sketch) {
 
     // hard code the position, it can be changed later
     let x = 20;
@@ -153,7 +153,13 @@
       qs.setPosition(x, y);
       return this;
     };
-    qs.setDraggable(draggable);
+    this.setDraggable = function(draggable) {
+      qs.setDraggable(draggable);
+    }
+    this.setCollapsible = function(collapsible) {
+      qs.setCollapsible(collapsible);
+    }
+    
     // Extend Quicksettings
     // so it can magically create a GUI for parameters passed by name
     qs.bindParams = function(object, params) {
