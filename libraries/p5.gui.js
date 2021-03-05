@@ -153,7 +153,13 @@
       qs.setPosition(x, y);
       return this;
     };
-
+    this.setDraggable = function(draggable) {
+      qs.setDraggable(draggable);
+    }
+    this.setCollapsible = function(collapsible) {
+      qs.setCollapsible(collapsible);
+    }
+    
     // Extend Quicksettings
     // so it can magically create a GUI for parameters passed by name
     qs.bindParams = function(object, params) {
