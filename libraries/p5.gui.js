@@ -165,6 +165,10 @@
         var val = object[arg];
         var typ = typeof val;
 
+        if(typeof arg === 'function') {
+          typ = typeof arg
+        }
+
         //console.log(typ, arg, val);
 
         // don't need to show the sliders for range min, max and step of a property
@@ -225,6 +229,10 @@
           case 'boolean':
 
             this.bindBoolean(arg, object[arg], object);
+            break;
+
+          case 'function':
+            this.addButton(arg.name, arg);
             break;
 
         }
