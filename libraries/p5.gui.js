@@ -136,6 +136,20 @@
       qs.bindParams(object, params);
     };
 
+    // update to update a param value.
+    this.update = function (key, value) { 
+      if (!key || !value) { console.error("No Parameters defined. Key and value required: obj.update(key, value)"); return false; }
+      try {
+        qs.setValue(key, value);
+      } catch (e) {
+        if (e instanceof TypeError) {
+          console.error(key + " is not a known GUI Element.");
+        } else {
+           logMyErrors(e);
+        }
+      }
+    }
+
     // noLoop() to call draw every time the gui changes when we are not looping
     this.noLoop = function() {
       qs.setGlobalChangeHandler(sketch._draw);

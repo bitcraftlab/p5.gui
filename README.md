@@ -52,6 +52,17 @@ p5.gui will magically pick up variables ending in `Min`, `Max` and `Step` to  co
 
 *See [here](examples/slider-range-1) for an example.*
 
+
+### Update gui param
+
+Sometimes you want to update one or more gui params, e.g. when you provide presets.
+
+```js
+gui.update('myNumber', 5);
+```
+
+*See [here](examples/quicksettings-3) for an example.*
+
 ### Use sliderRange() to control slider creation
 
 If you want explicitly control the range of a couple of sliders you can also use the `sliderRange(min, max, step)` command.
@@ -94,6 +105,8 @@ let params = {
 ```
 
 *See [here](examples/slider-range-3) for an example.*
+
+
 
 ### Pass your sketch in instance mode
 
