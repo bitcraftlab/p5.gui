@@ -4,7 +4,21 @@
 
 **p5.gui** magically generates a graphical user interface (sliders, color selector, etc) for each of your variables. Behind the scenes it uses other libraries such as Quicksettings (and in the future also DAT.GUI) to do all the hard work.
 
-You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5.js sketch.
+You currently need to include both `p5.gui.js` and `quicksettings.js` in your p5.js sketch. 
+
+You can include the library to OpenProcessing by adding these script url:
+
+```
+https://cdn.rawgit.com/bitcraftlab/p5.gui/master/libraries/p5.gui.js
+https://cdn.rawgit.com/bit101/quicksettings/master/quicksettings.js
+```
+
+or adding these script tag to your html header or p5.js Editor's `index.html`:
+
+```html
+<script src="https://cdn.rawgit.com/bitcraftlab/p5.gui/master/libraries/p5.gui.js"></script>
+<script src="https://cdn.rawgit.com/bit101/quicksettings/master/quicksettings.js"></script>
+```
 
 ## Usage
 
