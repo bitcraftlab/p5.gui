@@ -1,3 +1,5 @@
+this fork brings the addButton function from quickSettings and makes it available using this lib
+
 # p5.gui
 
 ![screenshot of p5.gui](p5_gui_screenshot.png)  
