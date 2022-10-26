@@ -136,6 +136,14 @@
       qs.bindParams(object, params);
     };
 
+    this.addButton = function(title, callback){
+      qs.addButton(title, callback);
+    }
+
+    this.setValue = function(title, value) {
+      qs.setValue(title, value);
+    };
+
     // noLoop() to call draw every time the gui changes when we are not looping
     this.noLoop = function() {
       qs.setGlobalChangeHandler(sketch._draw);
