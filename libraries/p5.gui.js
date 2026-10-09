@@ -137,8 +137,9 @@
     };
 
     // noLoop() to call draw every time the gui changes when we are not looping
+    // (use redraw() rather than the private _draw, which p5.js 2.x no longer exposes)
     this.noLoop = function() {
-      qs.setGlobalChangeHandler(sketch._draw);
+      qs.setGlobalChangeHandler(function() { sketch.redraw(); });
     };
 
     this.loop = function() {
@@ -180,12 +181,10 @@
             if(val instanceof Array && val.length === 3 && typeof val[0] === 'number') {
               // create color according to the current color mode of the current sketch
               var c = sketch.color(val[0], val[1], val[2]);
-              // get decimal RGB values
-              var c2 = c.levels.slice(0,3);
               // create HTML color code
-              var vcolor = '#' + c2.map(function(value) {
-                return ('0' + value.toString(16)).slice(-2);
-              }).join('');
+              // (p5.js 2.x colors no longer have .levels, but toString('#rrggbb')
+              // works in both 1.x and 2.x)
+              var vcolor = c.toString('#rrggbb');
               this.bindColor(arg, vcolor, object);
             } else {
               // multiple choice drop down list
